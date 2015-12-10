@@ -75,9 +75,8 @@ namespace SpeechNote
 
         private void StartRecord_Click(object sender, RoutedEventArgs e)
         {
-
             // Ví dụ ở file menu có mấy từ đó. Là nó chỉ focus lắng nghe mấy từ đó thôi. (mode grammar là vậy)
-            AudioManager.getInstance().AddSearchMode(eSearchType.GRAMMAR, "test", "\\Assets\\models\\grammar\\menu.gram");
+            //AudioManager.getInstance().AddSearchMode(eSearchType.GRAMMAR, "test", "\\Assets\\models\\grammar\\menu.gram");
             AudioManager.getInstance().StartRecorder("test");
         }
 
