@@ -1,0 +1,11 @@
+﻿#JSGF V1.0;
+
+grammar createnote;
+
+<action> = take | create | insert | order;
+
+<amount> = a | one | new;
+
+<object> = note | event;
+
+public <createnote> = <action> [<amount>] <object>;
