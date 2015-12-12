@@ -82,7 +82,7 @@ namespace SpeechNote
         /// <summary>
         /// PocketSphinx speech recognizer in a Runtime Component
         /// </summary>
-        private PocketSphinxRntComp.SpeechRecognizer SphinxSpeechRecognizer
+        public PocketSphinxRntComp.SpeechRecognizer SphinxSpeechRecognizer
         { get; set; }
 
         /// <summary>
@@ -158,6 +158,8 @@ namespace SpeechNote
             this.AddSearchMode(eSearchType.GRAMMAR, "time", "\\Assets\\models\\grammar\\time.gram");
             this.AddSearchMode(eSearchType.GRAMMAR, "yesno", "\\Assets\\models\\grammar\\yesno.gram");
             this.AddSearchMode(eSearchType.NGRAM, "language", "\\Assets\\models\\lm\\100.arpa");
+            this.AddSearchMode(eSearchType.GRAMMAR, "timesimple", "\\Assets\\models\\grammar\\timesimple.gram");
+            this.AddSearchMode(eSearchType.GRAMMAR, "notefield", "\\Assets\\models\\grammar\\notefield.gram");
             // add some grammar here
 
 #if DEBUG

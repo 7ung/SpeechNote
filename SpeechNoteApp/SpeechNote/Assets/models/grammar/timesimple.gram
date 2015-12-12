@@ -1,0 +1,49 @@
+﻿#JSGF V1.0;
+
+grammar timesimple;
+
+/**
+ * An absolute time.
+ *
+ * http://cmusphinx.sourceforge.net/wiki/sphinx4:jsgfsupport
+ * @example one oh clock
+ * @example twelve thirty seven pm
+ */
+public <timesimple> = ( <hour> [ <minute> ] [ am  | pm  | o'clock ]);
+
+/**
+ * An integer referring to an hour.
+ *
+ * @example one
+ * @example seven
+ */
+
+<number> = one | two | three | four | five | six | seven | eight | nine;
+
+<hour> =
+     ( <number>
+     | ten
+     | eleven
+     | twelve
+      );
+<minute> =
+	 ( <number>
+	 | ten		
+	 | eleven	
+	 | twelve	
+	 | thirteen 
+	 | fourteen 
+	 | fifteen  
+	 | sixteen  
+	 | seventeen
+	 | eighteen 
+	 | nineteen 
+	 | twenty	
+	 | (twenty ( <number> ))
+	 | thirty		 
+	 | (thirty ( <number> ))
+	 | forty		 
+	 | (forty ( <number> ))
+	 | fifty		 
+	 | (fifty ( <number> ))
+	 );

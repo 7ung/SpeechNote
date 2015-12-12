@@ -65,16 +65,16 @@
                     <TextBlock x:Name="dateBlock" TextWrapping="Wrap" Text="Date" Margin="12,0,0,0"/>
                     <toolkit:DatePicker Value="{Binding Mode=TwoWay, Path=Date}" />
                     <TextBlock x:Name="startTimeBlock" TextWrapping="Wrap" Text="Start Time" Margin="12,0,0,0"/>
-                    <toolkit:TimePicker Value="{Binding Mode=TwoWay, Path=Date}" />
+                    <toolkit:TimePicker x:Name="startTime" Value="{Binding Mode=TwoWay, Path=Date}" />
                     <TextBlock x:Name="endTimeBlock" TextWrapping="Wrap" Text="End Time" Margin="12,0,0,0"/>
-                    <toolkit:TimePicker Value="{Binding Mode=TwoWay, Path=EndDate}" />
+                    <toolkit:TimePicker x:Name="endTime" Value="{Binding Mode=TwoWay, Path=EndDate}" />
 
                     <CheckBox x:Name="reminderCheckbox" IsChecked="{Binding Mode=TwoWay, Path=IsReminder}" Content="Reminder"/>
                     
                 </StackPanel>
 
                 <StackPanel Name="detailPanel" Grid.Row="2">
-                    <TextBlock x:Name="detailBlock" TextWrapping="Wrap" Text="Description" Margin="12,0,0,0"/>
+                    <TextBlock x:Name="detailBlock" TextWrapping="Wrap" Text="Content" Margin="12,0,0,0"/>
                     <TextBox x:Name="detailTextBox" Text="{Binding Mode=TwoWay, Path=Description}" Height="300" TextWrapping="Wrap"/>
                 </StackPanel>
         </Grid>

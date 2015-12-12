@@ -1,0 +1,6 @@
+﻿#JSGF V1.0;
+
+grammar notefield;
+
+public <notefield> = start time | end time | name | reminder | content | back | cancel | save | next | delete;
+
