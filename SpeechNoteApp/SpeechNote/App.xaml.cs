@@ -7,11 +7,15 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using SpeechNote.Resources;
+using System.Collections.ObjectModel;
+using SpeechNote.Models;
 
 namespace SpeechNote
 {
     public partial class App : Application
     {
+        public static ObservableCollection<EventInfo> EventList { get; set; }
+
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
