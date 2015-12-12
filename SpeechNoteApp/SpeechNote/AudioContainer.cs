@@ -78,6 +78,7 @@ namespace SpeechNote
 
         private string _currentsearchmode = String.Empty;
 
+
         /// <summary>
         /// PocketSphinx speech recognizer in a Runtime Component
         /// </summary>
@@ -113,7 +114,8 @@ namespace SpeechNote
                     this.SphinxSpeechRecognizer.AddGrammarSearch(name, filepath);
                     break;
                 case eSearchType.NGRAM:
-                    this.SphinxSpeechRecognizer.AddNgramSearch(name, filepath);
+                    var str = this.SphinxSpeechRecognizer.AddNgramSearch(name, filepath);
+                    Debug.WriteLine("Add search mode result: " + str);
                     break;
                 default:
                     break;
@@ -150,6 +152,14 @@ namespace SpeechNote
         {
             this.SphinxSpeechRecognizer = new SpeechRecognizer();
             string rs = this.SphinxSpeechRecognizer.Initialize("\\Assets\\models\\hmm\\en-us-semi", "\\Assets\\models\\dict\\cmu07a.dic");
+
+            this.AddSearchMode(eSearchType.GRAMMAR, "demo", "\\Assets\\models\\grammar\\menu.gram");
+            this.AddSearchMode(eSearchType.GRAMMAR, "createnote", "\\Assets\\models\\grammar\\createnote.gram");
+            this.AddSearchMode(eSearchType.GRAMMAR, "time", "\\Assets\\models\\grammar\\time.gram");
+            this.AddSearchMode(eSearchType.GRAMMAR, "yesno", "\\Assets\\models\\grammar\\yesno.gram");
+            this.AddSearchMode(eSearchType.NGRAM, "language", "\\Assets\\models\\lm\\100.arpa");
+            // add some grammar here
+
 #if DEBUG
             Debug.WriteLine(rs);
 #endif

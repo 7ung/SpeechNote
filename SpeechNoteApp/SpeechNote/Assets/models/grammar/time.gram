@@ -1,0 +1,16 @@
+﻿#JSGF V1.0;
+
+grammar time;
+
+<number> = one | two | three | four | five | six | seven | eight | nine | ten | eleven | twelve | fifteen |
+			 twenty | thirty | forty | fifty;
+
+<spec> = o'clock | am | pm;
+
+<simple> = <number> [<number> | <spec>];
+
+<relate> =  (<number> | half | quarter) (to | past) <number>;
+
+<future> = <number> (minute | minutes | hour | hours) (later | more);
+
+public <time> = <simple> | <relate> | <future>;

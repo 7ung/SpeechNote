@@ -35,8 +35,6 @@ namespace SpeechNote
 
             AudioManager.getInstance().InitAudioRecorder();
             this.outputtxtblock.Text = "Ready for use";
-
-
         }
 
         private async Task initSpeechRecognizer()
@@ -68,17 +66,15 @@ namespace SpeechNote
         private void SpeechRecognizer_FinalResultFound(string finalresult)
         {
             // Sự kiện được kích hoạt khi phát hiện sự im lặng kết thúc câu nói.
-            Debug.WriteLine("FinalResultFound" + finalresult);
+            Debug.WriteLine("FinalResultFound " + finalresult);
             if (String.IsNullOrEmpty(finalresult) == false)
                 this.outputtxtblock.Text = finalresult;
         }
 
         private void StartRecord_Click(object sender, RoutedEventArgs e)
         {
-
-            // Ví dụ ở file menu có mấy từ đó. Là nó chỉ focus lắng nghe mấy từ đó thôi. (mode grammar là vậy)
-            AudioManager.getInstance().AddSearchMode(eSearchType.GRAMMAR, "test", "\\Assets\\models\\grammar\\menu.gram");
-            AudioManager.getInstance().StartRecorder("test");
+            AudioManager.getInstance().StartRecorder("time");
+            this.outputtxtblock.Text = "Listenning";
         }
 
     }
