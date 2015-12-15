@@ -181,7 +181,7 @@ Platform::String^ SpeechRecognizer::AddNgramSearch(Platform::String^ name, Platf
 	char *Cname = convertStringToChars(name);
 	char *CfilePath = convertStringToChars(filePath);
 	char *CcompleteFilePath = concat(installedFolderPath, CfilePath);
-
+	
 	int result = ps_set_lm_file(ps, Cname, CcompleteFilePath);
 
 	return (result == 0) ? 

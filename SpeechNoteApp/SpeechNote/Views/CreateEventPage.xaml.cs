@@ -77,7 +77,7 @@ namespace SpeechNote.Views
             InitNumberDict();
         }
         
-        private void SphinxSpeechRecognizer_resultFinalizedBySilence(string finalResult)
+        private async void SphinxSpeechRecognizer_resultFinalizedBySilence(string finalResult)
         {
             // kêt thúc câu nói
             if (String.IsNullOrEmpty(finalResult))
@@ -112,10 +112,10 @@ namespace SpeechNote.Views
                     break;
             }
 
-            ValueSelection(finalResult);
+            await ValueSelection(finalResult);
         }
 
-        private void ValueSelection(string result)
+        private async Task ValueSelection(string result)
         {
             switch (_state)
             {
@@ -139,7 +139,7 @@ namespace SpeechNote.Views
                         }
                         else if (result == "save")
                         {
-                            SaveAll();
+                            await SaveAll();
                         }
                         else if (result == "name")
                         {
@@ -155,7 +155,7 @@ namespace SpeechNote.Views
                         }
                         else if (result == "cancel" || result == "delete" || result == "remove")
                         {
-                            DeleteItem();
+                            await DeleteItem();
                         }
 
                         break;
@@ -371,12 +371,12 @@ namespace SpeechNote.Views
             AudioManager.getInstance().SphinxSpeechRecognizer.resultFinalizedBySilence += SphinxSpeechRecognizer_resultFinalizedBySilence;
         }
 
-        private void saveBtn_Click(object sender, EventArgs e)
+        private async void saveBtn_Click(object sender, EventArgs e)
         {
-            SaveAll();
+            await SaveAll();
         }
         
-        private async void SaveEventList()
+        private async Task SaveEventList()
         {
             try
             {
@@ -396,7 +396,7 @@ namespace SpeechNote.Views
             }
         }
 
-        private void SaveAll()
+        private async Task SaveAll()
         {
             // focus vô cái khác để các UI đang edit nó notify cho model update
             this.Focus();
@@ -415,7 +415,7 @@ namespace SpeechNote.Views
                 if (_eventInfo != null)
                     App.EventList.Add(_eventInfo);
                 
-                SaveEventList();
+                await SaveEventList();
             }
             catch (Exception ex)
             {
@@ -447,12 +447,12 @@ namespace SpeechNote.Views
             }
         }
 
-        private void ApplicationBarMenuItem_Click(object sender, EventArgs e)
+        private async void ApplicationBarMenuItem_Click(object sender, EventArgs e)
         {
-            DeleteItem();
+            await DeleteItem();
         }
 
-        private void DeleteItem()
+        private async Task DeleteItem()
         {
             if(_speechOrder)
                 StopListening();
@@ -471,7 +471,7 @@ namespace SpeechNote.Views
 
             App.EventList.Remove(data);
 
-            SaveEventList();
+            await SaveEventList();
         }
 
         private DateTime StringToTime(string input)

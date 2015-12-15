@@ -564,9 +564,11 @@ ps_set_lm_file(ps_decoder_t *ps, const char *name, const char *path)
   int result;
 
   lm = ngram_model_read(ps->config, path, NGRAM_AUTO, ps->lmath);
+  //lm = ngram_model_read(ps->config, path, NGRAM_ARPA, ps->lmath);
+
   if (!lm)
       return -1;
-
+  
   result = ps_set_lm(ps, name, lm);
   ngram_model_free(lm);
   return result;
